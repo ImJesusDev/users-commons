@@ -17,6 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -26,18 +29,24 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	@Column(name = "first_name")
 	private String firstName;
 
+	@NotEmpty
 	@Column(name = "last_name")
 	private String lastName;
 
 	@Column(unique = true, length = 100)
+	@NotEmpty
+	@Email
 	private String email;
 	
+	@NotEmpty
 	@Column(unique = true, length = 30)
 	private String username;
 
+	@NotEmpty
 	@Column(length = 60)
 	private String password;
 	
@@ -52,6 +61,7 @@ public class User {
 	private Date lastConnection;
 
 	@ManyToMany(fetch = FetchType.LAZY)
+	@NotNull
 	@JoinTable(name = "users_x_roles", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
 			@UniqueConstraint(columnNames = { "user_id", "role_id" }) })
