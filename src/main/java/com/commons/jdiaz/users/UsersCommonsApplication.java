@@ -1,4 +1,4 @@
-package com.jdiaz.users.commons;
+package com.commons.jdiaz.users;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

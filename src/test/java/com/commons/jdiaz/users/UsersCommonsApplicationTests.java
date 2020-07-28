@@ -1,4 +1,4 @@
-package com.jdiaz.users.commons;
+package com.commons.jdiaz.users;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

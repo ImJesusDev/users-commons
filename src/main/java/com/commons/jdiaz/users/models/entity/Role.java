@@ -1,4 +1,4 @@
-package com.jdiaz.users.commons.models.entity;
+package com.commons.jdiaz.users.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
