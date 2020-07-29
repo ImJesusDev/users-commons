@@ -41,15 +41,18 @@ public class User {
 	@NotEmpty
 	@Email
 	private String email;
-	
+
 	@NotEmpty
 	@Column(unique = true, length = 30)
 	private String username;
 
+	@Column(name = "photo_url")
+	private String photoUrl;
+
 	@NotEmpty
 	@Column(length = 60)
 	private String password;
-	
+
 	private Boolean enabled;
 
 	@Column(name = "created_at")
@@ -62,8 +65,7 @@ public class User {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@NotNull
-	@JoinTable(name = "users_x_roles", joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
+	@JoinTable(name = "users_x_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
 			@UniqueConstraint(columnNames = { "user_id", "role_id" }) })
 	private List<Role> roles;
 
@@ -150,6 +152,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 }
