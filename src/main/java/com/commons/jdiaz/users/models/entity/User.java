@@ -69,6 +69,25 @@ public class User {
 			@UniqueConstraint(columnNames = { "user_id", "role_id" }) })
 	private List<Role> roles;
 
+	public User(Long id, @NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty @Email String email,
+			@NotEmpty String username, String photoUrl, @NotEmpty String password, Boolean enabled, Date createdAt,
+			Date lastConnection, @NotNull List<Role> roles) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.photoUrl = photoUrl;
+		this.password = password;
+		this.enabled = enabled;
+		this.createdAt = createdAt;
+		this.lastConnection = lastConnection;
+		this.roles = roles;
+	}
+
+	public User() {
+	}
+
 	@PrePersist()
 	public void prePersist() {
 		this.createdAt = new Date();
